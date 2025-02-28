@@ -14,7 +14,7 @@ class StudentService:
     def __init__(self, db_url=PG_URL):
         self.engine = create_async_engine(db_url, echo=False)
         self.Session = sessionmaker(bind=self.engine, class_=AsyncSession, expire_on_commit=False)
-    
+
     async def insert_student(self, last_name, first_name, faculty, course, grade):
         async with self.Session() as session:
             async with session.begin():
